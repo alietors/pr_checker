@@ -1,20 +1,7 @@
-class PRChecker
-  attr_accessor :githubRepository
-  
-  def initialize()
-    @githubRepository = new GithubRepository
-  end
-  
-  def initialize(githubRepository)
-    @githubRepository = githubRepository
-  end
-  
-  def setUrl(url)
-    @githubRepository.setUrl(url)
-  end
-  
-  def getPullRequestList
-    @githubRepository.getPullRequestList()
-  end
-  
-end
+require_relative 'GithubRepository'
+
+repo = GithubRepository.new
+repo.setOwner('alietors')
+repo.setRepository('pr_checker')
+pullRequestList = repo.downloadPullRequests
+print pullRequestList
