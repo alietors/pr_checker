@@ -1,6 +1,6 @@
-require_relative 'wrapper/RestWrapper'
-require_relative 'formatter/PullRequestFormatter'
-require_relative 'formatter/UserFormatter'
+require_relative '../wrapper/RestWrapper'
+require_relative '../formatter/PullRequestFormatter'
+require_relative '../formatter/UserFormatter'
 
 class PullRequestDownloader
   

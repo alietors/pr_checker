@@ -1,5 +1,5 @@
 require 'yaml'
-require_relative 'Container'
+require_relative 'di/Container'
 
 config = YAML.load_file('config/config.yml')
 

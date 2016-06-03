@@ -1,6 +1,7 @@
-require_relative 'GithubRepository'
-require_relative 'notificator/CommentWritter'
-require_relative 'formatter/MessageFormatter'
+require_relative '../service/GithubRepository'
+require_relative '../helper/PullRequestDownloader'
+require_relative '../notificator/CommentWritter'
+require_relative '../formatter/MessageFormatter'
 
 class Container
   def initialize(config)
