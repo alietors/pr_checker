@@ -1,4 +1,7 @@
 class MessageFormatter
+  def initialize(imageUrl)
+    @imageUrl = imageUrl
+  end
   def formatMessage(pullRequest)
     message = self.generateImage + self.generateMessage(pullRequest)
     return message
@@ -9,6 +12,9 @@ class MessageFormatter
   end
   
   def generateImage
-    return "![Crazy Monkey](https://media.giphy.com/media/kLLvH1EOtCwQ8/giphy.gif)\n"
+    if(@imageUrl.nil? || @imageUrl.empty?)
+      return ''
+    end
+    return "![Image](#{@imageUrl})\n"
   end
 end
