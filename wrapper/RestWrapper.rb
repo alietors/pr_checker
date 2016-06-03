@@ -2,8 +2,8 @@ require 'unirest'
 
 class RestWrapper
 
-  def initialize
-    @header = { "content-type" => "application/json", "Authorization" => "token " }
+  def initialize(token)
+    @header = { "content-type" => "application/json", "Authorization" => "token #{token}" }
   end
   def get(url)
     return Unirest.get(url, headers:@header)
