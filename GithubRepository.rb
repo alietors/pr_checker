@@ -3,9 +3,9 @@ require_relative 'PullRequestDownloader'
 class GithubRepository 
   attr_accessor :owner, :repository, :pullRequestList, :pullRequestDownloader
   
-  def initialize
+  def initialize(pullRequestDownloader)
     @url = ''
-    @pullRequestDownloader = PullRequestDownloader.new
+    @pullRequestDownloader = pullRequestDownloader
   end
   
   def setOwner(owner)
