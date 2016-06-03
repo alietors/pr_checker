@@ -6,4 +6,5 @@ You should have a config.yml file on config/ directory with the following parame
 REPO_OWNER: 'owner'
 REPO_NAME: 'name'
 OAUTH_TOKEN: 'oauth_token'
+DAY_LIMIT_NUMBER: 2
 ```

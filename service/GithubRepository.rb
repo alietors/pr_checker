@@ -1,4 +1,4 @@
-require_relative 'PullRequestDownloader'
+require_relative '../helper/PullRequestDownloader'
 
 class GithubRepository 
   attr_accessor :owner, :repository, :pullRequestList, :pullRequestDownloader
