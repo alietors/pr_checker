@@ -7,13 +7,13 @@ class Container
   def initialize(config)
     @diContainer = Hash.new
     
-    @diContainer['messageFormatter'] = MessageFormatter.new
-    @diContainer['pullRequestFormatter'] = PullRequestFormatter.new
-    @diContainer['userFormatter'] = UserFormatter.new
-    @diContainer['restWrapper'] = RestWrapper.new(config['OAUTH_TOKEN'])
-    @diContainer['PRDownloader'] = PullRequestDownloader.new(@diContainer['pullRequestFormatter'], @diContainer['userFormatter'], @diContainer['restWrapper'])
-    @diContainer['repo'] = GithubRepository.new(@diContainer['PRDownloader'])
-    @diContainer['commentWritter'] = CommentWritter.new(@diContainer['messageFormatter'], @diContainer['restWrapper'], config['DAY_LIMIT_NUMBER'])
+    @diContainer['message_formatter'] = MessageFormatter.new(config['IMAGE_URL'])
+    @diContainer['pull_request_formatter'] = PullRequestFormatter.new
+    @diContainer['user_formatter'] = UserFormatter.new
+    @diContainer['rest_wrapper'] = RestWrapper.new(config['OAUTH_TOKEN'])
+    @diContainer['pr_downloader'] = PullRequestDownloader.new(@diContainer['pull_request_formatter'], @diContainer['user_formatter'], @diContainer['rest_wrapper'])
+    @diContainer['github_repository'] = GithubRepository.new(@diContainer['pr_downloader'])
+    @diContainer['comment_writter'] = CommentWritter.new(@diContainer['message_formatter'], @diContainer['rest_wrapper'], config['DAY_LIMIT_NUMBER'])
   end
   
   def get(key)

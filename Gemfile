@@ -1,1 +1,2 @@
 gem 'unirest'
+gem 'minitest'
