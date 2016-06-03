@@ -2,9 +2,10 @@ class CommentWritter
   
   BASE_URL = 'https://api.github.com/'
   
-  def initialize(messageFormatter, restWrapper)
+  def initialize(messageFormatter, restWrapper, dayLimitNumber)
     @messageFormatter = messageFormatter
     @restWrapper = restWrapper
+    @dayLimitNumber = dayLimitNumber
   end
   
   def sendMessage(pullRequests)
@@ -21,9 +22,9 @@ class CommentWritter
   end
     
   def isPullRequestOld(pullRequest)
-    redLineTime = DateTime.now - 2
+    redLineTime = DateTime.now - @dayLimitNumber
     prUpdated = DateTime.rfc3339(pullRequest.updatedTimestamp)
-    return (redLineTime <=> prUpdated)
+    return (redLineTime <=> prUpdated) == 1
   end
   
   def hasAssignee(pullRequest)
