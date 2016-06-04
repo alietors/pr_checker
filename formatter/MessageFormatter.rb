@@ -3,15 +3,15 @@ class MessageFormatter
     @imageUrl = imageUrl
   end
   def formatMessage(pullRequest)
-    message = self.generateImage + self.generateMessage(pullRequest)
+    message = generateImage + generateMessage(pullRequest)
     return message
   end
   
-  def generateMessage(pullRequest)
-    return "@"+pullRequest.reviewer.name+ " you have a waiting PR from @"+pullRequest.creator.name+"\n"+pullRequest.url
+  private def generateMessage(pullRequest)
+    return "@#{pullRequest.reviewer.name} you have a PR waiting from @#{pullRequest.creator.name}\n#{pullRequest.url}"
   end
   
-  def generateImage
+  private def generateImage
     if(@imageUrl.nil? || @imageUrl.empty?)
       return ''
     end

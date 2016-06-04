@@ -13,29 +13,29 @@ class PullRequestDownloader
   end
   
   def download(owner, repository)
-    incompletePullRequests = self.downloadPullRequests(owner, repository)
-    return self.updatePullRequests(incompletePullRequests, owner)
+    incompletePullRequests = downloadPullRequests(owner, repository)
+    return updatePullRequests(incompletePullRequests, owner)
   end
   
-  def downloadPullRequests(owner, repository)
-    url = self.buildPullUrl(owner, repository)
+  private def downloadPullRequests(owner, repository)
+    url = buildPullUrl(owner, repository)
     response = @restWrapper.get(url)
     return @pullRequestFormatter.format(response.body)
   end
   
-  def buildPullUrl(owner, repository)
+  private def buildPullUrl(owner, repository)
     BASE_URL+'repos/'+owner+'/'+repository+'/pulls'
   end
   
-  def updatePullRequests(incompletePullRequest, owner)
+  private def updatePullRequests(incompletePullRequest, owner)
     usersInfo = Hash.new
     pullRequests = []
     
     incompletePullRequest.each do | pullRequest |   
-      user = self.getUserInformation(pullRequest.creator.name, usersInfo)
+      user = getUserInformation(pullRequest.creator.name, usersInfo)
       pullRequest.creator.email = user.email
       
-      user = self.getUserInformation(pullRequest.reviewer.name, usersInfo)
+      user = getUserInformation(pullRequest.reviewer.name, usersInfo)
       pullRequest.reviewer.email = user.email
       
       pullRequest.repoOwner = owner
@@ -45,9 +45,9 @@ class PullRequestDownloader
     return pullRequests
   end
   
-  def getUserInformation(userName, usersInfo)
+  private def getUserInformation(userName, usersInfo)
     if (!usersInfo.include? userName)
-        user = self.downloadUserInformation(userName)
+        user = downloadUserInformation(userName)
         usersInfo[user.name] = user
     end
     if usersInfo[userName].nil?
@@ -56,13 +56,13 @@ class PullRequestDownloader
     return usersInfo[userName]
   end
   
-  def downloadUserInformation(userName)
-    url = self.buildUserUrl(userName)
+  private def downloadUserInformation(userName)
+    url = buildUserUrl(userName)
     response = @restWrapper.get(url)
     return @userFormatter.format(response.body)
   end
   
-  def buildUserUrl(user)
+  private def buildUserUrl(user)
     BASE_URL+'users/'+user
   end
   

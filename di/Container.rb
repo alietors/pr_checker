@@ -1,4 +1,5 @@
 require_relative '../service/GithubRepository'
+require_relative '../service/PullRequestEvaluator'
 require_relative '../helper/PullRequestDownloader'
 require_relative '../notificator/CommentWritter'
 require_relative '../formatter/MessageFormatter'
@@ -13,7 +14,8 @@ class Container
     @diContainer['rest_wrapper'] = RestWrapper.new(config['OAUTH_TOKEN'])
     @diContainer['pr_downloader'] = PullRequestDownloader.new(@diContainer['pull_request_formatter'], @diContainer['user_formatter'], @diContainer['rest_wrapper'])
     @diContainer['github_repository'] = GithubRepository.new(@diContainer['pr_downloader'])
-    @diContainer['comment_writter'] = CommentWritter.new(@diContainer['message_formatter'], @diContainer['rest_wrapper'], config['DAY_LIMIT_NUMBER'])
+    @diContainer['comment_writter'] = CommentWritter.new(@diContainer['rest_wrapper'])
+    @diContainer['pull_request_evaluator'] = PullRequestEvaluator.new(@diContainer['comment_writter'], @diContainer['message_formatter'], config['DAY_LIMIT_NUMBER'])  
   end
   
   def get(key)

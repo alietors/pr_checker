@@ -9,9 +9,9 @@ repo = container.get('github_repository')
 repo.setOwner(config['REPO_OWNER'])
 repo.setRepository(config['REPO_NAME'])
  
-commentWritter = container.get('comment_writter')
+prEvaluator = container.get('pull_request_evaluator')
 
 pullRequests = repo.downloadPullRequests
-commentWritter.sendMessage(pullRequests)
+prEvaluator.evaluatePullRequests(pullRequests)
 
   

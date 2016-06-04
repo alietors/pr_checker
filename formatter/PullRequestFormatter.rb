@@ -3,9 +3,6 @@ require_relative '../dto/User'
 
 class PullRequestFormatter
   
-  def initialize
-  end
-  
   def format(body)
     pullRequestList = []
     body.each  do |pullRequest|
@@ -13,7 +10,7 @@ class PullRequestFormatter
       creator = User.new
       reviewer = User.new
       creator.name = pullRequest['user']['login'];
-      unless pullRequest['assignee'].nil?
+      if (!pullRequest['assignee'].nil?)
         reviewer.name = pullRequest['assignee']['login']
       end
       pullRequestToInsert.creator = creator

@@ -17,6 +17,6 @@ class GithubRepository
   end
   
   def downloadPullRequests()
-    self.pullRequestList = @pullRequestDownloader.download(@owner, @repository)
+    return @pullRequestList = @pullRequestDownloader.download(@owner, @repository)
   end
 end
