@@ -32,8 +32,8 @@ class MessageFormatterTest < Minitest::Test
 
   private def configure_pull_request
     pull_request = PullRequest.new
-    pull_request.creator = User.new('creator', '')
-    pull_request.reviewer = User.new('reviewer', '')
+    pull_request.creator = User.new(name: 'creator', email: '')
+    pull_request.reviewer = User.new(name: 'reviewer', email: '')
     pull_request.url = 'http://test.com/pull'
 
     pull_request

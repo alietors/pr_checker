@@ -8,23 +8,14 @@ class PullRequest
                 :open_timestamp,
                 :updated_timestamp
 
-  def initialize(
-    repo_owner = '',
-    creator = nil,
-    reviewer = nil,
-    url = '',
-    repository = '',
-    issue_number = '',
-    open_timestamp = '',
-    updated_timestamp = ''
-  )
-    @repo_owner = repo_owner
-    @creator = creator
-    @url = url
-    @repository = repository
-    @issue_number = issue_number
-    @open_timestamp = open_timestamp
-    @updated_timestamp = updated_timestamp
-    @reviewer = reviewer
+  def initialize(**pr)
+    @repo_owner = pr['repo_owner']
+    @creator = pr['creator']
+    @url = pr['url']
+    @repository = pr['repository']
+    @issue_number = pr['issue_number']
+    @open_timestamp = pr['open_timestamp']
+    @updated_timestamp = pr['updated_timestamp']
+    @reviewer = pr['reviewer']
   end
 end

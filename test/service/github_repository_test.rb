@@ -12,8 +12,8 @@ class GithubRepositoryTest < Minitest::Test
   def test_no_pull_request
     owner = 'owner'
     repository = 'repo'
-    @github_repository.set_owner(owner)
-    @github_repository.set_repository(repository)
+    @github_repository.owner = owner
+    @github_repository.repository = repository
 
     @pull_request_downloader_mock.expect(:download, '', [owner, repository])
 
