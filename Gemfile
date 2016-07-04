@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
 gem 'unirest'
+gem 'minitest-reporters'
 gem 'minitest'
 gem 'rake'
