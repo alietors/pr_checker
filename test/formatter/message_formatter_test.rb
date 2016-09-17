@@ -10,22 +10,22 @@ class MessageFormatterTest < Minitest::Test
   end
 
   def test_format_message
-    @message_formatter = MessageFormatter.new('')
+    @message_formatter = MessageFormatter.new(url: '')
     pull_request = configure_pull_request
-    expected = format_message_expected(pull_request)
+    expected = format_message_expected(pull_request: pull_request)
 
-    message = @message_formatter.format_message(pull_request)
+    message = @message_formatter.format_message(pull_request: pull_request)
 
     assert_equal(expected, message)
   end
 
   def test_format_message_with_image
     image_url = 'url'
-    @message_formatter = MessageFormatter.new(image_url)
+    @message_formatter = MessageFormatter.new(url: image_url)
     pull_request = configure_pull_request
-    expected = format_message_expected(pull_request, image_url)
+    expected = format_message_expected(pull_request: pull_request, image: image_url)
 
-    message = @message_formatter.format_message(pull_request)
+    message = @message_formatter.format_message(pull_request: pull_request)
 
     assert_equal(expected, message)
   end
@@ -39,7 +39,7 @@ class MessageFormatterTest < Minitest::Test
     pull_request
   end
 
-  private def format_message_expected(pull_request, image = '')
+  private def format_message_expected(pull_request:, image: '')
     expected = ''
     expected = "![Image](#{image})\n" unless image.empty?
     expected + "@#{pull_request.reviewer.name} you have a PR waiting from"\
