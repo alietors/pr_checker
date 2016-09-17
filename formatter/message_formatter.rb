@@ -13,6 +13,6 @@ class MessageFormatter
   end
 
   private def generate_image
-    (@image_url.nil? || @image_url.empty?) ? '' : "![Image](#{@image_url})\n"
+    @image_url.nil? || @image_url.empty? ? '' : "![Image](#{@image_url})\n"
   end
 end

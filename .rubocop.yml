@@ -1,9 +1,9 @@
 AllCops:
   Includes:
-    - Rakefile
     - Gemfile
     - /*.rb
     - /**/*.rb
+  TargetRubyVersion: 2.3
 Documentation:
     Enabled: false
 Metrics/MethodLength:
@@ -12,3 +12,7 @@ Metrics/AbcSize:
   Enabled: false
 Metrics/LineLength:
   Max: 120
+Metrics/ParameterLists:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false

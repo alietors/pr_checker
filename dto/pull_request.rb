@@ -9,13 +9,13 @@ class PullRequest
                 :updated_timestamp
 
   def initialize(repo_owner: '',
-  creator: '',
-  reviewer: '',
-  url: '',
-  repository: '',
-  issue_number: '',
-  open_timestamp: '',
-  updated_timestamp: '')
+                 creator: '',
+                 reviewer: '',
+                 url: '',
+                 repository: '',
+                 issue_number: '',
+                 open_timestamp: '',
+                 updated_timestamp: '')
     @repo_owner = repo_owner
     @creator = creator
     @url = url

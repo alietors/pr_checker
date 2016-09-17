@@ -1,4 +1,4 @@
-require 'yaml'
+require 'yaml'.freeze
 require_relative 'di/container'
 
 config = YAML.load_file('config/config.yml')
