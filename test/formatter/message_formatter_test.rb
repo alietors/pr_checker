@@ -42,7 +42,7 @@ class MessageFormatterTest < Minitest::Test
   private def format_message_expected(pull_request:, image: '')
     expected = ''
     expected = "![Image](#{image})\n" unless image.empty?
-    expected + "@#{pull_request.reviewer.name} you have a PR waiting from"\
+    expected + "@#{pull_request.reviewer.name} you have a PR waiting from "\
     "@#{pull_request.creator.name}\n#{pull_request.url}"
   end
 end
