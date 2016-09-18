@@ -12,3 +12,6 @@ IMAGE_URL: 'http://assets.sbnation.com/assets/2654061/chimp-smell.gif'
 
 # Run unit tests
 rake test
+
+# Run code analyzer
+rake rubocop
